@@ -1,0 +1,288 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #000; /* Black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; /* Ensures the Light 300 weight is applied */
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* Fade-in duration */
+}
+
+
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.normal-text{
+    color:white;
+    text-align:center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 50;
+    max-width: 1000px; /* You can adjust this value as needed */
+    width: 100%; 
+}
+
+.above-text {
+    position: fixed;
+    white-space:nowrap;
+    top: 3.5%; /* Move the buttons to about 25% from the top of the screen */
+    left: 50%;
+    transform: translateX(-50%); 
+    font-size: 50px; /* Adjust the size of the text */
+    color: white; /* White color for the text */
+    font-weight: 500; /* Montserrat Light 300 */
+    text-align: center;
+}
+
+.figure {
+    width: 800px; /* Adjust size as needed */
+    height: auto;
+    transform: perspective(5000px);
+    transition: transform 0.1s ease-out, filter 0.2s ease-in-out;
+    position: fixed;
+    opacity:0.8;
+}
+
+
+.figure:hover {
+    filter: brightness(1.2) hue-rotate(120deg); /* Bright green effect */
+}
+
+
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow mouse interactions to pass through */
+}
+.soundcloud-widget {
+    position: fixed;
+    bottom: 10px; /* Distance from the bottom */
+    right: 10px; /* Distance from the right */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    width: 300px; /* Width of the widget */
+    height: 166px; /* Height of the widget */
+}
+.youtube-container {
+    position: fixed; /* Fixes the element to the viewport */
+    bottom: 10px; /* Distance from the bottom of the screen */
+    right: 10px; /* Distance from the right of the screen */
+    width: 50px; /* Set the width of the video player */
+    height: 50px; /* Set the height of the video player (16:9 ratio) */
+    z-index: 1000; /* Ensures it stays on top of other content */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Adds a shadow for a cleaner look */
+}
+
+.youtube-container iframe {
+    width: 100%; /* Ensures the iframe fits the container */
+    height: 100%;
+}
+
+/* Buttons styling */
+.buttons {
+    position: absolute;
+    top: 12%; /* Move the buttons to about 25% from the top of the screen */
+    left: 50%;
+    transform: translateX(-50%); /* Center the buttons horizontally */
+    display: flex;
+    gap: 50px;
+}
+
+
+.btn {
+    background-color: transparent;
+    color: black;
+    padding: 10px 20px;
+    border:none;
+    font-size: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; /* Ensures the Light 300 weight is applied */
+    text-decoration: none;
+}
+
+.btn2 {
+    background-color: transparent;
+    color:#738891;
+    padding: 10px 20px;
+    border:none;
+    font-size: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; /* Ensures the Light 300 weight is applied */
+    text-decoration: none;
+}
+
+.btn2:hover {
+    transform: scale(4s);
+    color: transparent;
+    filter: brightness(8) hue-rotate(120deg); /* Bright green effect */
+}
+
+.btn.home {
+    font-size: 50px; /* Adjust the size of the text */
+    color: white; /* White color for the text */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+    font-weight: 500; /* Apply a medium weight */
+    text-align: center; /* Center align the text */
+    text-decoration: none; /* Remove the underline from the link */
+    display: inline-block; /* Make the link behave like a block element */
+    padding: 1px 20px; /* Optional: Adjust padding for better spacing */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.btn:hover {
+    transform: scale(4s);
+    color: transparent; /* You can change this to the color you like */
+}
+
+
+
+
+.music-page {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    gap: 10px; /* Adjust the gap between images */
+    flex-wrap: wrap; /* Allow wrapping of images */
+    margin-top: 40px;
+    filter:grayscale(95%);
+    will-change: transform, filter;
+}
+
+
+.music-left, .music-right {
+    flex: 0.28;
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* Remove gap between the images */
+    align-items: center;
+    justify-content: center;
+}
+
+.music-center {
+    max-width: 23%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 0px; /* No gap between the images */
+    flex: 2;
+    justify-items: center; /* Center each image inside the grid cells */
+    
+}
+
+
+/* Center images' size adjustments */
+.music-center img {
+    max-width: 100%; /* Use the full width of the grid cell */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Make the long images (4a and 7a) span across two columns */
+.music-center a:nth-child(4),
+.music-center a:nth-child(7) {
+    grid-column: span 2; /* These images span two columns */
+}
+
+/* Hover effect for images */
+.music-center img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+/* When the page is loaded, images will fade in */
+
+/* Flip effect for images */
+.flip-container {
+    perspective: 500px; /* Perspective for 3D effect */
+}
+
+.flip-card {
+    width: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 2s;
+}
+
+.flip-card:hover {
+    transform: rotateY(180deg); /* Flip the card */
+}
+
+.flip-card img {
+    width: 100%;
+    backface-visibility: hidden; /* Hide back side when flipped */
+}
+
+/* Text that appears on hover */
+.flip-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    color: #738891;
+    font-size: 20px;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100; /* Ensures the Light 300 weight is applied */
+}
+
+.flip-card:hover .flip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .music-page {
+        flex-direction: column; /* Stack left, center, and right images vertically */
+        gap: 10px; /* Adjust the gap between images */
+    }
+
+    .music-left, .music-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Adjust gap */
+    }
+
+    .music-center {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+
+    .music-left img, .music-right img, .music-center img {
+        width: 100%; /* Full width for images on small screens */
+        height: auto;
+    }
+}
+
+/* Extra small screens (iPhone portrait) */
+@media (max-width: 480px) {
+    .music-left img, .music-right img, .music-center img {
+        width: 100%; /* Full width for images */
+        max-width: 90%; /* Optional: Allow images to shrink a bit */
+    }
+}
