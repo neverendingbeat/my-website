@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Particle settings
         let particles = [];
-        const numParticles = 100;
+        const numParticles = 20;
 
         // Initialize particles
         for (let i = 0; i < numParticles; i++) {

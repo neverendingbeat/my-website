@@ -1,13 +1,13 @@
 body {
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     background: #000; /* Black background */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 300; /* Ensures the Light 300 weight is applied */
+    font-weight: 100; /* Ensures the Light 300 weight is applied */
 }
 
 .fade-in {
@@ -30,21 +30,29 @@ body {
     color:white;
     text-align:center;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 50;
-    max-width: 1000px; /* You can adjust this value as needed */
-    width: 100%; 
+    font-size:min(1vw,2vh);
+    width:50%;
+    max-height:50%;
+}
+
+@media only screen and (max-width: 768px) {
+    .normal-text {
+        font-size: min(2vw,4vh); /* Slightly larger font for small screens */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .normal-text {
+        font-size: min(3vw,5vh); /* Even larger font for very small screens */
+    }
 }
 
 .above-text {
-    position: fixed;
-    white-space:nowrap;
-    top: 3.5%; /* Move the buttons to about 25% from the top of the screen */
-    left: 50%;
-    transform: translateX(-50%); 
-    font-size: 50px; /* Adjust the size of the text */
+    position: absolute;
+    top: 20px;
+    font-size: 20px; /* Adjust the size of the text */
     color: white; /* White color for the text */
-    font-weight: 500; /* Montserrat Light 300 */
-    text-align: center;
+    font-weight: 400; /* Montserrat Light 300 */
 }
 
 .figure {
@@ -110,7 +118,7 @@ canvas {
     color: black;
     padding: 10px 20px;
     border:none;
-    font-size: 25px;
+    font-size: min(2vw, 5vh);
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
     font-family: 'Montserrat', sans-serif;
@@ -118,17 +126,30 @@ canvas {
     text-decoration: none;
 }
 
+
 .btn2 {
     background-color: transparent;
     color:#738891;
     padding: 10px 20px;
     border:none;
-    font-size: 25px;
+    font-size: min(2vw, 5vh);
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
     font-family: 'Montserrat', sans-serif;
     font-weight: 300; /* Ensures the Light 300 weight is applied */
     text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn, .btn2 {
+        font-size: 3vw; /* Slightly larger font for small screens */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .btn, .btn2 {
+        font-size: 5vw; /* Even larger font for very small screens */
+    }
 }
 
 .btn2:hover {
@@ -170,13 +191,13 @@ canvas {
 
 
 .music-left, .music-right {
-    flex: 0.28;
+    max-width:28%;
     display: flex;
     flex-direction: column;
-    gap: 0px; /* Remove gap between the images */
     align-items: center;
     justify-content: center;
 }
+
 
 .music-center {
     max-width: 23%;
@@ -238,7 +259,7 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%) rotateY(180deg);
     color: #738891;
-    font-size: 20px;
+    font-size: 1.5vw;
     text-align: center;
     visibility: hidden;
     opacity: 0;
@@ -250,39 +271,4 @@ canvas {
 .flip-card:hover .flip-text {
     visibility: visible;
     opacity: 1;
-}
-
-
-
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-    .music-page {
-        flex-direction: column; /* Stack left, center, and right images vertically */
-        gap: 10px; /* Adjust the gap between images */
-    }
-
-    .music-left, .music-right {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 10px; /* Adjust gap */
-    }
-
-    .music-center {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
-    }
-
-    .music-left img, .music-right img, .music-center img {
-        width: 100%; /* Full width for images on small screens */
-        height: auto;
-    }
-}
-
-/* Extra small screens (iPhone portrait) */
-@media (max-width: 480px) {
-    .music-left img, .music-right img, .music-center img {
-        width: 100%; /* Full width for images */
-        max-width: 90%; /* Optional: Allow images to shrink a bit */
-    }
 }
