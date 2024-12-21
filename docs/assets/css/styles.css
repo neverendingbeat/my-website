@@ -43,7 +43,7 @@ body {
 
 @media only screen and (max-width: 480px) {
     .normal-text {
-        font-size: min(3vw,5vh); /* Even larger font for very small screens */
+        font-size: min(2vw,5vh); /* Even larger font for very small screens */
     }
 }
 
@@ -109,7 +109,7 @@ canvas {
     left: 50%;
     transform: translateX(-50%); /* Center the buttons horizontally */
     display: flex;
-    gap: 50px;
+    gap: 3vw;
 }
 
 
@@ -189,9 +189,20 @@ canvas {
     will-change: transform, filter;
 }
 
+/* Stack images vertically on smaller screens */
+@media only screen and (max-width: 768px) {
+    .music-page {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .music-left, .music-right {
+        max-width: 80%; /* Make the images smaller to fit the screen */
+    }
+}
 
 .music-left, .music-right {
-    max-width:28%;
+    max-width:24%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -235,6 +246,7 @@ canvas {
 .flip-container {
     perspective: 500px; /* Perspective for 3D effect */
 }
+
 
 .flip-card {
     width: 100%;
