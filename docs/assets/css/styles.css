@@ -151,6 +151,18 @@ canvas {
         font-size: 5vw; /* Even larger font for very small screens */
     }
 }
+.fixed-bottom-text {
+    position: absolute;
+    bottom: 1%; /* Aligns to the bottom of the viewport */
+    left: 0; /* Aligns to the left of the viewport */
+    width: 100%; /* Ensures it takes full width of the screen */
+    color: #738891; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 10px 0; /* Add some padding around the text */
+    font-family: 'Montserrat', sans-serif; /* Use the same font as your site */
+    font-size: 16px; /* Set text size */
+    z-index: 9999; /* Ensure it's on top of other content */
+}
 
 .btn2:hover {
     transform: scale(4s);
@@ -209,6 +221,12 @@ canvas {
     
 }
 
+@media only screen and (max-width: 768px) {
+    .music-center {
+        max-width:50%;
+    }
+}
+
 
 /* Center images' size adjustments */
 .music-center img {
@@ -228,6 +246,7 @@ canvas {
 
     .music-left, .music-right {
         max-width: 20%; /* Make the images smaller to fit the screen */
+        display:none;
     }
 }
 
