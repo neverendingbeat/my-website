@@ -187,20 +187,6 @@ canvas {
     color: transparent; /* You can change this to the color you like */
 }
 
-@media only screen and (max-width: 768px) {
-    .buttons {
-        max-width: 90%; /* Increase max-width for small screens */
-        font-size: 3vw; /* Slightly larger font for small screens */
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .buttons {
-        max-width: 95%; /* Increase max-width further for very small screens */
-        font-size: 5vw; /* Even larger font for very small screens */
-    }
-}
-
 
 
 
