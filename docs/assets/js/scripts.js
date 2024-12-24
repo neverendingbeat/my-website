@@ -95,6 +95,37 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('loaded');
     };
     
-    // Load default page content (e.g., Home) when the page loads
+    // Load default page content (e.g., Home) when the page load
+    
+    const popupTriggers = document.querySelectorAll('.popup-trigger');
+
+// Add event listeners for each image to trigger the popup
+    popupTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const popupId = this.getAttribute('data-popup-id'); // Get the corresponding popup ID
+            const popup = document.getElementById(popupId); // Find the popup
+            popup.style.display = 'block'; // Show the popup
+        });
+    });
+
+    // Get all close buttons and add event listeners to close the popups
+    const closeButtons = document.querySelectorAll('.close-btn');
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const popupId = this.getAttribute('data-popup-id');
+            const popup = document.getElementById(popupId);
+            popup.style.display = 'none'; // Hide the popup when the close button is clicked
+        });
+    });
+
+    // Optionally, close the popup if user clicks outside the popup content
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('popup')) {
+            event.target.style.display = 'none';
+        }
+    });
 });
+
+
 

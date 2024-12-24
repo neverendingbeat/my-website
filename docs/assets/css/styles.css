@@ -5,7 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     font-weight: 100; /* Ensures the Light 300 weight is applied */
 }
@@ -18,7 +18,7 @@ body {
 
 
 .container {
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
@@ -26,12 +26,56 @@ body {
     align-items: center;
 }
 
+.container1 {
+    position: static;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.container2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .container2 {
+        top:80%;
+    }
+} 
+
+@media only screen and (max-width: 800px) {
+    .container3 {
+        top:10%;
+    }
+} 
+
+@media only screen and (max-height: 800px) {
+    .container3 {
+        top:10%;
+    }
+} 
+
 .normal-text{
     color:white;
     text-align:center;
+    justify-content: center;
     font-family: 'Montserrat', sans-serif;
     font-size:min(1vw,2vh);
-    width:50%;
+    margin:18%;
     max-height:50%;
 }
 
@@ -47,13 +91,18 @@ body {
     }
 }
 
+
 .above-text {
     position: absolute;
-    top: 20px;
-    font-size: 20px; /* Adjust the size of the text */
-    color: white; /* White color for the text */
-    font-weight: 400; /* Montserrat Light 300 */
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: white;
+    font-weight: 400;
+    z-index: 10;
 }
+
 
 .figure {
     width: 800px; /* Adjust size as needed */
@@ -103,13 +152,15 @@ canvas {
 }
 
 /* Buttons styling */
+
 .buttons {
     position: absolute;
-    top: 12%; /* Move the buttons to about 25% from the top of the screen */
+    top: 10%;
     left: 50%;
-    transform: translateX(-50%); /* Center the buttons horizontally */
+    transform: translateX(-50%);
     display: flex;
     gap: 3vw;
+    z-index: 10;
 }
 
 
@@ -170,16 +221,33 @@ canvas {
     filter: brightness(8) hue-rotate(120deg); /* Bright green effect */
 }
 
+
 .btn.home {
-    font-size: 50px; /* Adjust the size of the text */
-    color: white; /* White color for the text */
-    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
-    font-weight: 500; /* Apply a medium weight */
-    text-align: center; /* Center align the text */
-    text-decoration: none; /* Remove the underline from the link */
-    display: inline-block; /* Make the link behave like a block element */
-    padding: 1px 20px; /* Optional: Adjust padding for better spacing */
-    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+    font-size: min(5vw, 50px); /* Dynamic font size that scales with viewport width */
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+
+    text-decoration: none;
+    display: inline-block;
+    padding: 1px 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+/* Add media queries for even finer control */
+@media only screen and (max-width: 768px) {
+    .btn.home {
+        font-size: min(6vw, 40px); /* Slightly smaller max size on tablets */
+        padding: 1px 15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .btn.home {
+        font-size: min(7vw, 30px); /* Even smaller on phones */
+        padding: 1px 10px;
+    }
 }
 
 .btn:hover {
@@ -244,8 +312,7 @@ canvas {
     }
 
     .music-left, .music-right {
-        max-width: 20%; /* Make the images smaller to fit the screen */
-        display:none;
+        max-width: 60%; /* Make the images smaller to fit the screen */
     }
 }
 
@@ -293,7 +360,7 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%) rotateY(180deg);
     color: #738891;
-    font-size: 1.5vw;
+    font-size: max(1.5vw,2vh);
     text-align: center;
     visibility: hidden;
     opacity: 0;
@@ -305,4 +372,83 @@ canvas {
 .flip-card:hover .flip-text {
     visibility: visible;
     opacity: 1;
+}
+
+.events-page {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    gap: 10px; /* Adjust the gap between images */
+    flex-wrap: wrap; /* Allow wrapping of images */
+    margin-top: 5%;
+    filter:grayscale(50%);
+    will-change: transform, filter;
+}
+
+.events-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width:20%;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .events-page {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .events-img {
+        max-width: 50%; /* Make the images smaller to fit the screen */
+    }
+}
+
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Background overlay */
+    z-index: 1000; /* Ensure the popup is on top of other content */
+    padding: 20px;
+}
+
+.popup-content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the content */
+    background-color: black;
+    color:white;
+    padding: 20px;
+    max-width: 65%;
+    max-height: 80%;
+    overflow-y: auto; /* Scroll if content is too large */
+}
+
+.popup-img img{
+    max-width:90%;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Style for images */
+.events-img img {
+    cursor: pointer;
+    width:100%;
+}
+
+/* Popup trigger on hover (optional) */
+.events-img img:hover {
+    opacity: 0.8;
 }
